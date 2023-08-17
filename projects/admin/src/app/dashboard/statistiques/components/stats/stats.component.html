@@ -1,0 +1,62 @@
+<!--
+<div *ngIf="button1"> 
+  <button  class="btn btn-success" (click)="showDepense();button1=true"> click ici</button>
+  <div *ngIf="button1">
+    <h2>Dépenses mensuelles de la société</h2>
+    <div #chartDepenses style="width: 600px; height: 400px;"></div>
+</div>
+</div>
+<div>
+    <h2>Nombre d'accidents par mois</h2>
+    <div #chartAccidents style="width: 600px; height: 400px;"></div>
+  </div>
+  <div>
+    <h2>Nombre d'amendes par mois</h2>
+    <div #chartAmendes style="width: 600px; height: 400px"></div>
+  </div>
+  
+<div>
+    <h2>Dépenses mensuelles de la société</h2>
+    <div #chartTaskStatus style="width: 600px; height: 400px;"></div>
+</div>
+<div>
+  <h2>Dépenses entretien de la société</h2>
+  <div #chartEntretienStatus style="width: 600px; height: 400px;"></div>
+</div>-->
+
+<div class="dashboard">
+  <div class="dashboard-item">
+    <button class="btn btn-success" (click)="showDepense();button1=true">Click ici</button>
+    <div *ngIf="button1" >
+      <h2>Dépenses mensuelles de la société</h2>
+      <div id="chartDepenses" #chartDepenses class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="dashboard-item">
+    <h2>Nombre d'accidents par mois</h2>
+    <div id="chartAccidents" #chartAccidents class="chart"></div>
+  </div>
+  
+  <div class="dashboard-item">
+    <h2>Nombre d'amendes par mois</h2>
+    <div id="chartAmendes" #chartAmendes class="chart"></div>
+  </div>
+  
+  <div class="dashboard-item">
+    <h2>mission status mensuelles de la société</h2>
+    <div id="chartTaskStatus" #chartTaskStatus class="chart"></div>
+  </div>
+  
+  <div class="dashboard-item">
+    <h2> Entretien par voiture  de la société</h2>
+    <div id="chartEntretienStatus" #chartEntretienStatus class="chart"></div>
+  </div>
+  <div class="dashboard-item">
+    <h2> Demande entretien status mensuelles de la société</h2>
+    <div id="chartDemandeEntretienStatus" #chartDemandeEntretienStatus class="chart"></div>
+  </div>
+</div>
+
+
+  

@@ -1,0 +1,163 @@
+$demande-entretien-details-color: #333;
+$demande-entretien-details-bg-color: #fff;
+$demande-entretien-details-border-color: #ccc;
+$demande-entretien-details-border-radius: 4px;
+$demande-entretien-details-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+.demande-entretien-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+
+  .image-box {
+    height: 250px;
+    width: 250px;
+    margin-right: 20px;
+
+    .rounded-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid $demande-entretien-details-border-color;
+    border-radius: $demande-entretien-details-border-radius;
+    box-shadow: $demande-entretien-details-box-shadow;
+    background-color: $demande-entretien-details-bg-color;
+    color: $demande-entretien-details-color;
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid $demande-entretien-details-border-color;
+      margin: 10px 0;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    .button {
+      margin-top: 20px;
+    }
+
+    button[type="button"] {
+      cursor: pointer;
+    }
+
+    .obligation,
+    .adresse,
+    .numTelephone,
+    .email,
+    .numCIN,
+    .numCNSS {
+      margin-left: 10px;
+    }
+  }
+}/**
+$demande-entretien-details-color: #333;
+$demande-entretien-details-bg-color: #fff;
+$demande-entretien-details-border-color: #ccc;
+$demande-entretien-details-border-radius: 4px;
+$demande-entretien-details-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+.demande-entretien-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+
+  .image-box {
+    height: 250px;
+    width: 250px;
+    margin-right: 20px;
+
+    .rounded-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid $demande-entretien-details-border-color;
+    border-radius: $demande-entretien-details-border-radius;
+    box-shadow: $demande-entretien-details-box-shadow;
+    background-color: $demande-entretien-details-bg-color;
+    color: $demande-entretien-details-color;
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid $demande-entretien-details-border-color;
+      margin: 10px 0;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    .obligation,
+    .adresse,
+    .numTelephone,
+    .email,
+    .numCIN,
+    .numCNSS {
+      margin-left: 10px;
+    }
+
+    button[type="button"] {
+      cursor: pointer;
+    }
+  }
+}*/
+

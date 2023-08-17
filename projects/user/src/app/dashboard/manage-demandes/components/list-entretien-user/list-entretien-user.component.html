@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <!--<form class="mb-3">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Title search">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>-->
+    
+    <div class="listBox">
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table table-striped mt-2">
+            <ng-container matColumnDef="IdEntretien">
+              <th mat-header-cell *matHeaderCellDef>ID.</th>
+              <td mat-cell *matCellDef="let element; let index = index">{{ element.idEntretien }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="societe">
+              <th mat-header-cell *matHeaderCellDef>Fournisseur</th>
+              <td mat-cell *matCellDef="let element">{{ element.fournisseur.nomSociete }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="detail">
+              <th mat-header-cell *matHeaderCellDef>Detail</th>
+              <td mat-cell *matCellDef="let element">{{ element.detail }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="voiture">
+              <th mat-header-cell *matHeaderCellDef>Voiture</th>
+              <td mat-cell *matCellDef="let element">{{ element.voitureMarque }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="libellee">
+              <th mat-header-cell *matHeaderCellDef>Obligation</th>
+              <td mat-cell *matCellDef="let element">{{ element.libellee }}</td>
+            </ng-container>
+            
+            
+            
+            <ng-container matColumnDef="DateE">
+              <th mat-header-cell *matHeaderCellDef>Date entretien</th>
+              <td mat-cell *matCellDef="let element">{{ element.dateE }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef>Type</th>
+              <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+  </div>
+  

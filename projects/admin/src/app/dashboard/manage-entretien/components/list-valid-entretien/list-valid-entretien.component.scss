@@ -1,0 +1,45 @@
+/* Add the following code to your component's SCSS file */
+
+.container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .listBox {
+    margin-top: 2rem;
+  }
+  
+  .table {
+    width: 100%;
+  }
+  
+  /* Optional: Customize table styles */
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .btn {
+    margin-right: 0.5rem;
+  }
+  
+  /* Optional: Add hover and transition effects to buttons */
+  .btn {
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Optional: Adjust responsive behavior for smaller devices */
+  @media (max-width: 767px) {
+    .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    
+    .table-responsive-md {
+      overflow-x: auto;
+    }
+  }
+  

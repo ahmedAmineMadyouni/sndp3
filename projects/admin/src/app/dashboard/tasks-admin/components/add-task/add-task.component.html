@@ -1,0 +1,100 @@
+<div class="p-4">
+    <header *ngIf="data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Modifier une mission</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+      <header *ngIf="!data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Ajouter une mission</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+    <form  [formGroup]="newMissionForm">
+        <div class="row mt-3">
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Titre</mat-label>
+                        <input matInput  formControlName="titre" placeholder="Titre">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Type</mat-label>
+                        <input matInput formControlName="type"  placeholder="Type">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Profil</mat-label>
+                        <mat-select formControlName="affectationVoiture" >
+                            <mat-option *ngFor="let user of userna" [value]="user?.idAffectation">
+                              {{user.chauffeurUserName}} {{user?.chauffeurName}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label> Date mission</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dateMission" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description"  placeholder="mission description ...."></textarea>
+                    </mat-form-field>
+                    
+                </div>
+                <div formGroupName="adresse">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Addresse1</mat-label>
+                            <input matInput   placeholder="adresse1"  formControlName="adresse1">
+                        </mat-form-field>
+                    </div>  
+                    
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Addresse2</mat-label>
+                            <input matInput   placeholder="adresse1"  formControlName="adresse2">
+                        </mat-form-field>
+                    </div> 
+                
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Code Postal</mat-label>
+                            <input matInput   placeholder="codePostal"  formControlName="codePostal">
+                        </mat-form-field>
+                    </div>  
+                
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Ville</mat-label>
+                            <input matInput   placeholder="ville"  formControlName="ville">
+                        </mat-form-field>  
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Pays</mat-label>
+                    <input matInput   placeholder="pays"  formControlName="Pays">
+                </mat-form-field>  
+            </div>
+                </div>
+        </div>
+    </form>
+
+    <footer class="tw-p-6">
+        <div class="d-flex justify-content-center align-items-center">
+            <button *ngIf="!data" type="submit" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="createTask()" [disabled]="newMissionForm.invalid">Ajouter</button>
+      <button *ngIf="data" type="submit" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="updateTask()" >Modifier</button>
+        <button mat-flat-button class="btn btn-danger py-1 px-5" matDialogClose>Fermer</button>
+      </div>
+        
+      </footer>
+</div>

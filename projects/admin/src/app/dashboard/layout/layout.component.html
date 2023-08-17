@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <div class="navbar-brand">SNDP</div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/tasks" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Missions <span class="sr-only" *ngIf="'/tasks' === currentRoute" >(courant)</span></a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        </li>-->
+        <li class="nav-item  ">
+          <a class="nav-link" routerLink="/affectation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Affectation<span class="sr-only" *ngIf="'/affectation' === currentRoute" >(courant)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/chauffeur" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Chauffeur<span class="sr-only" *ngIf="'/chauffeur' === currentRoute" >(courant)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/voiture" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Voiture<span class="sr-only" *ngIf="'/voiture' === currentRoute" >(courant)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/entretien" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Traiter entretien<span class="sr-only" *ngIf="'/entretien' === currentRoute" >(courant)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fournisseur" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Fournisseur<span class="sr-only" *ngIf="'/fournisseur' === currentRoute" >(courant)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/declaration" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Declaration<span class="sr-only" *ngIf="'/declaration' === currentRoute" >(courant)</span></a>
+        </li>
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            Consulter PLus
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem class="nav-link" routerLink="declaration/amendes" routerLinkActive="active">Amendes - 1</button>
+            <button ngbDropdownItem class="nav-link" routerLink="declaration/accident" routerLinkActive="active">Accident </button>
+            <button ngbDropdownItem class="nav-link" routerLink="entretien/valide/entretien" routerLinkActive="active">Entretien </button>
+            <button ngbDropdownItem class="nav-link" routerLink="stats" routerLinkActive="active">Stats</button>
+          </div>
+        </div>    
+      </ul>
+      
+      
+        <div class="navbar-nav ml-auto">
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          &nbsp; 
+          &nbsp; 
+         
+          <li class="nav-item">
+            <button class="nav-link btn btn-logout" (click)="logout()">Logout</button>
+          </li>
+          <div class="nav-item d-flex align-items-center">
+            <img [src]="'http://localhost:8787/api/v1/auth/get/image/' + idPhoto" alt="" width="30" height="30" style="border-radius: 50%; margin-right: 5px;">
+            <span>{{ username }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

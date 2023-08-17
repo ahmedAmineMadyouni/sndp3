@@ -1,0 +1,46 @@
+<div class="mt-4">
+
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of dataSource;let index = index">
+        <div class="card mt-4 " >
+           
+                <div class="card-body">
+                    <h2 class="card-title mb-2">{{item.chauffeur?.nom}}</h2>
+                    <p class="card-subtitle mb-2 text-muted">Date demande  : {{item.dateDemandes}}</p>
+                    <p class="card-text">{{item.description }}</p>
+                   
+                    <div *ngIf="item.completed === null && !isInputDisabled" (click)="isInputDisabled=true" >
+                     <button mat-raised-button color="primary" (click)="num=index" > Ajouter Fournisseur </button>
+                     <button mat-raised-button class="btn btn-secondary" (click)="cancelDemande(item)" [disabled]="isButtonDisabled"  >Annuler demande</button>
+                      <a class="card-link" mat-raised-button color="basic" routerLink="/entretien/:{{item.idDemandeEntretien}}" (click)="seeDetails(index)">Detail</a>
+                    </div>
+                    <div *ngIf="item.completed === null &&isInputDisabled &&num==index">
+                      <form [formGroup]="fournisseurForm" >
+                      <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Fournisseur</mat-label>
+                      <mat-select formControlName="fournisseur" >
+                        <mat-option *ngFor="let four of fournisseur" [value]="four?.idFournisseur">
+                          {{four?.nomSociete}}
+                        </mat-option>
+                      </mat-select>
+                      </mat-form-field>
+                    </form>
+                    <button mat-raised-button color="primary" (click)="isInputDisabled=false"  >Annuler</button>
+                      <button mat-raised-button color="primary" (click)="startDemande(item)" [disabled]="isButtonDisabled"  >Commencer demande</button>
+                    </div>
+                    <a *ngIf="item.completed==='ADMIN_APROVED'" class="card-link" mat-raised-button color="basic" routerLink="/entretien/:{{item.idDemandeEntretien}}" (click)="seeDetails(index)">Details</a>
+                    <button *ngIf="item.completed==='ADMIN_APROVED'" mat-raised-button  class="btn btn-secondary" (click)="cancelDemande(item)"  >Annuler demande</button>
+                    <div *ngIf="item.completed === 'SUCCESS'" >
+                      <button mat-raised-button *ngIf="item.status==false" color="primary" (click)="validateDemande(item)" [disabled]="isButtonDisabled" >Valider demande</button>
+                      <button mat-raised-button *ngIf="item.status==true" color="primary" (click)="deleteDemende(item)" [disabled]="isButtonDisabled" >Supprimer demande</button>
+                    </div>
+                    
+                  </div>
+            
+        </div>
+      </div>
+    </div>
+    </div>
+    
+        

@@ -1,0 +1,101 @@
+
+    
+    <!--<form >
+        <div class="row mt-3">
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Search</mat-label>
+                        <input matInput  placeholder="affectName search">
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-3">
+                    
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>By chauffeurs</mat-label>
+                        <mat-select >
+                            <mat-option *ngFor="let chauff of chauffeurs" [value]="chauff?.idConducteur">
+                              {{chauff?.nom}} {{chauff?.prenom}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-3">
+                    
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>By voiture</mat-label>
+                        <mat-select >
+                            <mat-option *ngFor="let voit of voitures" [value]="voit?.idVoiture">
+                              {{voit?.name}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div> 
+                 
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Deadline Date</mat-label>
+                        <input matInput [matDatepicker]="picker" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+        </div>
+    </form>-->
+    <div class="  mt-4">
+
+      <div class="d-flex justify-content-end">
+          <button class="addAffectation" mat-raised-button   (click)="addAffectation()" >Ajouter  affectation</button>
+          
+      </div>
+
+
+    <div class="listBox">
+        <table mat-table [dataSource]="data" class="mat-elevation-z8  w-100 mt-2">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="idAffectation">
+              <th mat-header-cell *matHeaderCellDef> Id. </th>
+              <td mat-cell *matCellDef="let element;let index = index"> {{element.idAffectation }} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="chauff">
+              <th mat-header-cell *matHeaderCellDef> Chauffeur </th>
+              <td mat-cell *matCellDef="let element"> {{element.idChauffeur}} {{element.chauffeurUserName}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="voiture">
+              <th mat-header-cell *matHeaderCellDef> Voiture </th>
+              <td mat-cell *matCellDef="let element"> {{element.voitureModele}}  {{element.voitureMarque}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="deadLineDate">
+                <th mat-header-cell *matHeaderCellDef> Date fin affectation</th>
+                <td mat-cell *matCellDef="let element"> {{element.dateFin}} </td>
+              </ng-container>
+              <ng-container matColumnDef="affectDate">
+                <th mat-header-cell *matHeaderCellDef> Date debut d'affectation  </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateDebut }} </td>
+              </ng-container>
+            
+
+            <ng-container matColumnDef="actions" >
+                <th mat-header-cell *matHeaderCellDef class="w-20">  </th>
+                <td mat-cell *matCellDef="let element">  
+                    <button class="btn btn-warning" mat-raised-button (click)="updateAffectation(element)">Modifier</button>
+                    <button  mat-raised-button color="warn" (click)="deleteAffectation(element)">Supprimer</button>
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+          
+    </div>
+</div>

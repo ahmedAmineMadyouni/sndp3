@@ -1,0 +1,166 @@
+<div class="p-4">
+    <header *ngIf="!data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Ajouter un/une  chauffeur</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+      <header *ngIf="data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Modifier  chauffeur</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+    <form [formGroup]="newChauffeurForm" >
+        <div class="row mt-3">
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Nom</mat-label>
+                        <input matInput   placeholder="Nom" formControlName="Nom">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Prenom</mat-label>
+                        <input matInput   placeholder="prenom" formControlName="prenom">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Mot de passe</mat-label>
+                      <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Mot de passe" formControlName="password">
+                      <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Confirmation du mot de passe</mat-label>
+                      <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Confirmation du mot de passe" formControlName="confirmPassword">
+                      <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                      </button>
+                      <mat-error *ngIf="newChauffeurForm.hasError('passwordMismatch')">Les mots de passe ne correspondent pas.</mat-error>
+                    </mat-form-field>
+                  </div>
+                  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numero C.I.N</mat-label>
+                        <input matInput   placeholder="numero C.I.N" formControlName="numCIN" >
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput   placeholder="email" formControlName="email">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numero CNSS</mat-label>
+                        <input matInput   placeholder="numCNSS" formControlName="numCNSS" >
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numero Telephone</mat-label>
+                       <!-- <input type="text" id="numTelephone" formControlName="numTelephone"><br><br>-->
+                       <input matInput   placeholder="numTelephone" type="text" formControlName="numTelephone">
+                    </mat-form-field>
+                </div> 
+
+                <div *ngIf="data" class="col-md-12 my-3">
+                    <label for="selectFile" class="btn btn-primary">Modifier photo chauffeur</label>
+                    <span>{{fileName}}</span>
+                    <input type="file" id="selectFile" (change)="selectImage($event)" hidden class="form-control">
+                </div>
+                <div *ngIf="!data" class="col-md-12 my-3">
+                    <label for="selectFile" class="btn btn-primary">Select photo chauffeur</label>
+                    <span>{{fileName}}</span>
+                    <input type="file" id="selectFile" (change)="selectImage($event)" hidden class="form-control">
+                </div>         
+     
+    <div formGroupName="adresse">
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Addresse1</mat-label>
+                <input matInput   placeholder="adresse1"  formControlName="adresse1">
+            </mat-form-field>
+        </div>  
+        
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Addresse2</mat-label>
+                <input matInput   placeholder="adresse1"  formControlName="adresse2">
+            </mat-form-field>
+        </div> 
+    
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Code Postal</mat-label>
+                <input matInput   placeholder="codePostal"  formControlName="codePostal">
+            </mat-form-field>
+        </div>  
+    
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Ville</mat-label>
+                <input matInput   placeholder="ville"  formControlName="ville">
+            </mat-form-field>  
+</div>
+<div class="col-md-12">
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Pays</mat-label>
+        <input matInput   placeholder="pays"  formControlName="pays">
+    </mat-form-field>  
+</div>
+    </div>
+</div>
+</form>
+           
+        
+           
+
+    <footer class="tw-p-6">
+        <div class="d-flex justify-content-center align-items-center">
+            <button *ngIf="!data" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="createChauffeur()"  >Ajouter</button>
+            <button *ngIf="data" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="updateChauffeur()"  >Modifier</button>
+            <button mat-flat-button class="btn btn-danger py-1 px-5" matDialogClose>Fermer</button>
+          </div>
+        
+      </footer>
+</div>
+<!--<form form [formGroup]="newChauffeurForm">
+    <label for="Nom">Matricule :</label>
+    <input type="text" id="Nom" formControlName="Nom"><br><br>
+
+    <label for="prenom">Date de circulation :</label>
+    <input type="text" id="prenom" formControlName="prenom"><br><br>
+  
+    <label for="password">Date d'assurance :</label>
+    <input type="text" id="password" formControlName="password"><br><br>
+  
+    
+  
+    <label for="numTelephone">numTelephone  :</label>
+    <input type="text" id="numTelephone" formControlName="numTelephone"><br><br>
+  
+    <label for="numCIN"> numCIN :</label>
+    <input type="text" id="numCIN" formControlName="numCIN"><br><br>
+  
+    <label for="numCNSS"> numCNSS :</label>
+    <input type="text" id="numCNSS" formControlName="numCNSS"><br><br>
+
+    <label for="email">Type :</label>
+    <input type="email" id="email" formControlName="email"><br><br>
+  
+    <label for="selectFile" class="btn btn-primary">Select Image</label>
+    <span>{{fileName}}</span>
+    <input type="file" id="selectFile" (change)="selectImage($event)" hidden class="form-control"><br><br>
+  
+   
+  
+    <button type="submit" (click)="createTask()">Valider</button>
+  </form>-->

@@ -1,0 +1,91 @@
+<!--<div class="mt-4">
+
+    <div class="row">
+        <div class="col-md-3" *ngFor="let item of dataSource2; let index = index">
+          <div class="card mt-3">
+            <img class="card-img-top" src="http://localhost:8787/api/v1/auth/get/image/{{ item.photo.photo_id }}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{ item.type }}</h2>
+              <p class="card-subtitle mb-2 text-muted">Date of Accident: {{ item.dateAcident }}</p>
+              <p class="card-text">{{ item.detail }}</p>
+              <p class="card-text">Location: {{ item.lieu }}</p>
+              <p class="card-text">Constat #1: {{ item.numAmendes }}</p>
+              <p class="card-text">Constat #2: {{ item.montant }}</p>
+              <p class="card-text">Declaration ID: {{ item.idDeclarationAcc }}</p>
+              <p class="card-text">Declaration Date: {{ item.dateDeclaration }}</p>
+              <a class="card-link" mat-raised-button color="basic" routerLink="/tasks/:{{ item.idDeclarationAcc }}">Details</a>
+              <button mat-raised-button color="warn" (click)="validateAmendes(item)" [disabled]="isButtonDisabled">Complete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let item of dataSource; let index = index">
+          <div class="card mt-3">
+            <img class="card-img-top" src="http://localhost:8787/api/v1/auth/get/image/{{ item.photo.photo_id }}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{ item.type }}</h2>
+              <p class="card-subtitle mb-2 text-muted">Date of Accident: {{ item.dateAcident }}</p>
+              <p class="card-text">{{ item.description }}</p>
+              <p class="card-text">Location: {{ item.lieu }}</p>
+              <p class="card-text">Constat #1: {{ item.numConstat1 }}</p>
+              <p class="card-text">Constat #2: {{ item.numConstat2 }}</p>
+              <p class="card-text">Declaration ID: {{ item.idDeclarationAcc }}</p>
+              <p class="card-text">Declaration Date: {{ item.dateDeclaration }}</p>
+              <a class="card-link" mat-raised-button color="basic" routerLink="/tasks/:{{ item.idDeclarationAcc }}">Details</a>
+              <button mat-raised-button color="warn" (click)="validateAccident(item)" [disabled]="isButtonDisabled" >Complete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="mt-4">-->
+
+      <div class="my-4">
+
+        <div class="row">
+          <div class="col-md-3" *ngFor="let item of dataSource2; let index = index">
+            <div class="card my-3">
+              <img class="card-img-top" src="http://localhost:8787/api/v1/auth/get/image/{{ item.idPhotoDec }}" alt="Card image cap">
+              <div class="card-body">
+                <h2 class="card-title">Type:{{ item.type }}</h2>
+                <p class="card-subtitle mb-2 text-muted">Date du Accident: {{ item.dateAmendes }}</p>
+                <p class="card-text">Detail: {{ item.detail }}</p>
+                <p class="card-text">Lieu: {{ item.lieu }}</p>
+                <p class="card-text">Num°: Amendes #1: {{ item.numAmendes }}</p>
+                <p class="card-text">Montant #2: {{ item.montant }}</p>
+                <p class="card-text">Declaration ID: {{ item.idDeclarationAcc }}</p>
+                <p class="card-text">Date Declaration : {{ item.dateDeclaration }}</p>
+                <a class="card-link btn btn-outline-primary" routerLink="/declaration/declarationAmendes/:{{ item.idDeclarationAmendes }}"(click)="seeDetailsAmendes(index)" >Detail</a>
+                <button class="btn btn-outline-danger" (click)="validateAmendes(item)" [disabled]="isButtonDisabled">Valider</button>
+                 <button class="btn btn-outline-danger" (click)="cancelAmendes(item)" [disabled]="isButtonDisabled">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-3" *ngFor="let item of dataSource; let index = index">
+            <div class="card my-3">
+              <img class="card-img-top" src="http://localhost:8787/api/v1/auth/get/image/{{ item.idPhotoDec }}" alt="Card image cap">
+              <div class="card-body">
+                <h2 class="card-title">{{ item.type }}</h2>
+                <p class="card-subtitle mb-2 text-muted">Date du Accident: {{ item.dateAcident }}</p>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text">Lieu: {{ item.lieu }}</p>
+                <p class="card-text">Constat #1: {{ item.numConstat1 }}</p>
+                <p class="card-text">Constat #2: {{ item.numConstat2 }}</p>
+                <p class="card-text">Declaration ID: {{ item.idDeclarationAcc }}</p>
+                <p class="card-text">Date Declaration : {{ item.dateDeclaration }}</p>Declaration
+                <a class="card-link btn btn-outline-primary" routerLink="/declaration/:{{ item.idDeclarationAcc }}" (click)="seeDetailsAccident(index)">Detail</a>
+                <button class="btn btn-outline-danger" (click)="validateAccident(item)" [disabled]="isButtonDisabled">Valider</button>
+                <button class="btn btn-outline-danger" (click)="cancelAccident(item)" [disabled]="isButtonDisabled">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      
+
+      
+          

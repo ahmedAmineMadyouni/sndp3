@@ -1,0 +1,155 @@
+<!-- <div class="container">
+    <div class="imageBox">
+        <img src="http://localhost:8787/api/v1/auth/get/image/{{data.voiture.photo.photo_id}}" alt="{{data.voiture.photo.name}}" width="100" height="100" style="border-radius: 100%;">
+                  
+    </div>
+    <div class="d-flex justify-content-between align-items-baseline my-3">
+        <h1 class="card-title ">{{data.chauffeur.nom}}</h1>
+        
+    </div>
+    <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{data.dateAmendes}}</p>
+    <hr>
+    <p class="card-text">{{data.description}}</p>
+    <button  mat-raised-button color="warn">Complete</button>
+</div>
+<button type="button" (click)="goBack()">go back</button>-->
+
+<!--
+<div class="demande-entretien-details">
+    <div class="image-box">
+      <img src="http://localhost:8787/api/v1/auth/get/image/{{data.voiture.photo.photo_id}}" alt="{{data.voiture.photo.name}}" width="100" height="100" class="rounded-image">
+    </div>
+    <div class="details">
+      <h1 class="title">{{data.chauffeur.nom}}</h1>
+      <p class="subtitle">Deadline Date: {{data.dateDemandes}}</p>
+      <hr>
+      <p class="description">{{data.description}}</p>
+      <hr>
+      <p class="obligation">{{data.obligation}}</p>
+      <div *ngIf="completed">
+        <button class="button" mat-raised-button color="warn">Validate entretien </button>
+      </div>
+      <div *ngIf="aprovedStatus">
+        <button class="button" mat-raised-button color="warn">start entretien </button>
+        <button class="button" mat-raised-button color="warn">cancel demande entretien </button>
+      </div>
+      <button class="button" type="button" (click)="goBack()">Go back</button>
+    </div>
+  </div>-->
+
+
+
+
+
+
+  <div class="demande-entretien-details">
+    <div class="image-box">
+      <img src="http://localhost:8787/api/v1/auth/get/image/{{data.voiture.photo?.photo_id}}" alt="{{data.voiture.photo.name}}" width="100" height="100" class="rounded-image">
+    </div>
+    <div class="details">
+      <h1 class="title">{{data.chauffeur.nom}} {{data.chauffeur.prenom}}</h1>
+      <p class="subtitle">Date Demandes : {{data.dateDemandes}}</p>
+      <hr>
+      <p class="description">Description : {{data.description}}</p>
+      <hr>
+      <label for="obligation">Obligation:</label>
+      <p class="obligation">{{data.obligation}}</p>
+      <label for="adresse">Adresse:</label>
+      <p class="adresse">{{data.chauffeur?.adresse?.adresse1}}</p>
+      <label for="numTelephone">Téléphone:</label>
+      <p class="numTelephone">{{data.chauffeur.numTelephone}}</p>
+      <label for="email">Email:</label>
+      <p class="email">{{data.chauffeur?.email}}</p>
+      <label for="numCIN">Numéro CIN:</label>
+      <p class="numCIN">{{data.chauffeur?.numCIN}}</p>
+      <label for="numCNSS">Numéro CNSS:</label>
+      <p class="numCNSS">{{data.chauffeur?.numCNSS}}</p>
+      <label for="type"> Type:</label>
+      <p class="numCNSS">{{data.type}}</p>
+      <div *ngIf="data.completed=== 'SUCCESS'&& data.status==false ">
+        <button class="button" mat-raised-button color="warn">Valider entretien </button>
+        <button class="button" mat-raised-button color="warn"(click)="deleteDemande(data)">Supprimer demende entretien </button>
+      </div>
+      <div *ngIf="data.completed=== 'CANCELED'">
+        <button class="button" mat-raised-button color="warn"(click)="deleteDemande(data)">Supprimer demende entretien </button>
+      </div>
+      <div *ngIf="data.completed=== null&& !isInputDisabled"  >
+        <button class="button" mat-raised-button color="warn" (click)="isInputDisabled=true">Commencer entretien </button>
+        <button class="button" mat-raised-button color="warn"(click)="cancelDemande(data)">Annuler demande entretien </button>
+      </div>
+      <div *ngIf="isInputDisabled">
+        <form [formGroup]="fournisseurForm" >
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Fournisseur</mat-label>
+        <mat-select formControlName="fournisseur" >
+          <mat-option *ngFor="let four of fournisseur" [value]="four?.idFournisseur">
+            {{four?.nomSociete}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary" (click)="isInputDisabled=false"  >Retourner</button>
+        <button mat-raised-button color="primary" (click)="startDemande(data)"  >Commencer demande</button>
+      </div>
+      <div *ngIf="data.completed=== 'ADMIN_APROVED'">
+        <button class="button" mat-raised-button color="warn"(click)="cancelDemande(data)">Annuler demande entretien </button>
+      </div>
+      <button class="button" type="button" (click)="goBack()">Retourner</button>
+    </div>
+  </div>
+  <!--<div class="demande-entretien-details">
+    <div class="image-box">
+      <img src="http://localhost:8787/api/v1/auth/get/image/{{data.voiture.photo.photo_id}}" alt="{{data.voiture.photo.name}}" width="100" height="100" class="rounded-image">
+    </div>
+    <div class="details">
+      <h1 class="title">{{data.chauffeur.nom}} {{data.chauffeur.prenom}}</h1>
+      <p class="subtitle">Deadline Date: {{data.dateDemandes}}</p>
+      <hr>
+      <p class="description">{{data.description}}</p>
+      <hr>
+      <label for="obligation">Obligation:</label>
+      <p class="obligation">{{data.obligation}}</p>
+      <label for="adresse">Adresse:</label>
+      <p class="adresse">{{data.chauffeur.adresse}}</p>
+      <label for="numTelephone">Téléphone:</label>
+      <p class="numTelephone">{{data.chauffeur.numTelephone}}</p>
+      <label for="email">Email:</label>
+      <p class="email">{{data.chauffeur.email}}</p>
+      <label for="numCIN">Numéro CIN:</label>
+      <p class="numCIN">{{data.chauffeur.numCIN}}</p>
+      <label for="numCNSS">Numéro CNSS:</label>
+      <p class="numCNSS">{{data.chauffeur.numCNSS}}</p>
+      <div *ngIf="data.completed === 'SUCCESS' && !data.status">
+        <button mat-raised-button color="warn">Validate entretien</button>
+        <button mat-raised-button color="warn" (click)="deleteDemande(data)">Delete demande entretien</button>
+      </div>
+      <div *ngIf="data.completed === 'CANCELED'">
+        <button mat-raised-button color="warn" (click)="deleteDemande(data)">Delete demande entretien</button>
+      </div>
+      <div *ngIf="data.completed === null && !isInputDisabled">
+        <button mat-raised-button color="warn" (click)="isInputDisabled = true">Start entretien</button>
+        <button mat-raised-button color="warn" (click)="cancelDemande(data)">Cancel demande entretien</button>
+      </div>
+      <div *ngIf="isInputDisabled">
+        <form [formGroup]="fournisseurForm">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>User</mat-label>
+            <mat-select formControlName="fournisseur">
+              <mat-option *ngFor="let four of fournisseur" [value]="four?.idFournisseur">
+                {{four?.nomSociete}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <button mat-raised-button color="primary" (click)="cancelDemande(data); isInputDisabled = false">Cancel</button>
+        <button mat-raised-button color="primary" (click)="startDemande(data)">Start demande</button>
+      </div>
+      <div *ngIf="data.completed === 'ADMIN_APROVED'">
+        <button class="button" mat-raised-button color="warn"(click)="cancelDemande(data)">cancel demande entretien </button>
+      </div>
+      <button class="button" type="button" (click)="goBack()">Go back</button>
+    </div>
+  </div>
+  
+  
+-->

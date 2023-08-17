@@ -1,0 +1,226 @@
+<!--<div class="mt-4">
+
+
+  <div class="row">
+    <h1> this is for mission</h1>
+    <div class="col-md-3" *ngFor="let item of dataSource;let index = index">
+      <div class="card mt-3" *ngIf="item.missionStatus!=='SUCCESS'" >
+        <div class="card-body">
+          <h2 class="card-title">{{item.titre}}</h2>
+          <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{item.dateMission}}</p>
+          <p class="card-text">{{item.obligation }}</p>
+          <div *ngIf="item.missionStatus === 'NEW_TASK' ">
+          <a  class="card-link"  mat-raised-button color="basic" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)" >Details</a>
+            <button  mat-raised-button color="warn" (click)="startTask(item)">start mission</button>
+          </div>
+         <div *ngIf="item.missionStatus === 'IN_PROGRESS' ">
+          <button  mat-raised-button color="warn"(click)="cancelTask(item)">cancel mission</button>
+          <a  class="card-link"  mat-raised-button color="basic" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)" >Details</a>
+          <button  mat-raised-button color="warn"(click)="completeTask(item)">Complete mission</button>
+         
+         </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="demandeData">
+    <h1> this is for demande</h1><br>
+    <div class="col-md-3" *ngFor="let item of demandeData;let index = index">
+      <div class="card mt-3" >
+        <div class="card-body">
+          <h2 class="card-title">{{item.obligation}}</h2>
+          <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{item.dateDemandes}}</p>
+          <p class="card-text">{{item.description }}</p>
+          <a  class="card-link"  mat-raised-button color="basic" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)" >Detailss</a>
+          <button  mat-raised-button color="warn" (click)="startDemandeEntretien(item)" >start</button>
+        </div>
+        <div *ngIf="item.completed==='IN_PROGRESS'">
+          <button mat-raised-button color="primary" (click)="isInputDisabled=!isInputDisabled"  >complete</button>
+          <a  class="card-link"  mat-raised-button color="basic" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)" >Detailss</a>
+          <button mat-raised-button color="primary" (click)="cancelDemandeEntretien(item)"  >cancel</button>
+          <form *ngIf="isInputDisabled">
+          <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>numConstat2</mat-label>
+                <input matInput   placeholder="numConstat2" formControlName="numConstat2">
+            </mat-form-field>
+        </div>  
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>type</mat-label>
+                <input matInput   placeholder="type"  formControlName="type">
+            </mat-form-field>
+        </div>
+      </form> 
+      <button mat-raised-button color="primary" (click)="isInputDisabled=!isInputDisabled"  >back</button>
+      <button mat-raised-button color="primary" (click)="startDemandeEntretien(item)"  >complete demande</button>
+    </div>
+      </div>
+    </div>
+  </div>
+  </div>-->
+
+
+  <!-- <div class="container mt-4">
+    <div class="row g-0">
+      <div class="col-lg-6 bg-primary "> -->
+        
+        <!-- <div class="col-12">
+          <h1>ici les missions</h1>
+        </div> -->
+  <!-- <div class="row"*ngIf="dataSource"> -->
+        <!-- <div class="col-mb-3" *ngFor="let item of dataSource; let index = index">
+          <div class="card mt-3" *ngIf="item.missionStatus !== 'SUCCESS'">
+            <div class="card-body">
+              <h2 class="card-title">Titre: {{item.titre}}</h2>
+              <p class="card-subtitle mb-2 text-muted">Date Mission : {{item.dateMission}}</p>
+              <p class="card-text">{{item.description}}</p>
+              <div *ngIf="item.missionStatus === 'NEW_TASK'">
+                <a class="btn btn-primary card-link" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)">Details</a>
+                <button class="btn btn-warning" (click)="startTask(item)">Commencer Mission</button>
+              </div>
+              <div *ngIf="item.missionStatus === 'IN_PROGRESS'">
+                <button class="btn btn-warning" (click)="cancelTask(item)">Annuler Mission</button>
+                <a class="btn btn-primary card-link" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)">Details</a>
+                <button class="btn btn-success" (click)="completeTask(item)">Completer Mission</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div> -->
+    <!-- <div class="col-lg-6 "> -->
+      <!-- <div class="row" *ngIf="demandeData"> -->
+        <!-- <div class="col-12 mt-4">
+          <h1>ici c'est les  demandes d' entretien</h1>
+        </div> -->
+        <!-- <div class="col-md-3" *ngFor="let item of demandeData; let index = index">
+          <div class="card mt-3">
+            <div class="card-body">
+              <h2 class="card-title">{{item.obligation}}</h2>
+              <p class="card-subtitle mb-2 text-muted"> Date demande : {{item.dateDemandes}}</p>
+              <p class="card-text">{{item.description}}</p>
+              <a *ngIf="item.completed === 'ADMIN_APROVED'" class="btn btn-primary card-link" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)">Details</a>
+              <button *ngIf="item.completed === 'ADMIN_APROVED'" class="btn btn-warning" (click)="startDemandeEntretien(item)">Commencer</button>
+              <div *ngIf="item.completed === 'IN_PROGRESS'">
+              <div *ngIf="!isInputDisabled">
+              <button class="btn btn-primary" (click)="isInputDisabled = true">Completer</button>
+              <a class="btn btn-primary card-link" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)">Details</a>
+              <button class="btn btn-primary" (click)="cancelDemandeEntretien(item)">Annuler</button>
+               </div>
+               <div *ngIf="isInputDisabled">
+              <form   [formGroup]="newDemandeComplitationForm">
+                <div class="col-md-12">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>montant</mat-label>
+                    <input matInput placeholder="montant" type="number" formControlName="montant">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>num Demande Achat</mat-label>
+                    <input matInput placeholder="numDemandeAchat" formControlName="numDemandeAchat">
+                  </mat-form-field>
+                </div>
+              </form>
+              <button class="btn btn-primary" *ngIf="isInputDisabled" (click)="isInputDisabled = !isInputDisabled">Retourner</button>
+              <button class="btn btn-primary"  *ngIf="isInputDisabled" (click)="completeDemandeEntretien(item)">Completer Demande</button>
+            </div>
+             </div>
+           </div>
+          </div>
+         </div>
+        </div>   
+    </div>
+    </div>
+    
+    
+    
+   </div>
+   <div *ngIf="demansdeStatus&&taskStatus"> <h1>you don't have any tasks to start or Aproved Demande to Complete </h1></div> -->
+
+
+
+   <div class="container mt-4">
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <div class="card bg-primary">
+          <div class="card-body">
+            <h1 class="card-title">Vos Missions</h1>
+            <div *ngIf="dataSource">
+              <div class="card mt-3" *ngFor="let item of dataSource; let index = index">
+                <div class="card-body">
+                  <h2 class="card-title">Titre: {{item.titre}}</h2>
+                  <p class="card-subtitle mb-2 text-muted">Date Mission: {{item.dateMission}}</p>
+                  <p class="card-text">{{item.description}}</p>
+                  <div *ngIf="item.missionStatus === 'NEW_TASK'">
+                    <a class="btn btn-primary card-link" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)">Details</a>
+                    <button class="btn btn-success" (click)="startTask(item)">Commencer Mission</button>
+                  </div>
+                  <div *ngIf="item.missionStatus === 'IN_PROGRESS'">
+                    <button class="btn btn-warning" (click)="cancelTask(item)">Annuler Mission</button>
+                    <a class="btn btn-primary card-link" routerLink="/tasks/:{{item._idMission}}" (click)="seeDetails(index)">Details</a>
+                    <button class="btn btn-success" (click)="completeTask(item)">Completer Mission</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card bg-secondary " style="margin-left: 20px;">
+          <div class="card-body">
+            <h1 class="card-title">Vos demandes Approuvées</h1>
+            <div *ngIf="demandeData">
+              <div class="card mt-3" *ngFor="let item of demandeData; let index = index">
+                <div class="card-body">
+                  <h2 class="card-title">Obligation {{item.obligation}}</h2>
+                  <p class="card-subtitle mb-2 text-muted">Date demande: {{item.dateDemandes}}</p>
+                  <p class="card-text">{{item.description}}</p>
+                  <a *ngIf="item.completed === 'ADMIN_APROVED'" class="btn btn-primary card-link" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)" >Details</a>
+                  <button *ngIf="item.completed === 'ADMIN_APROVED'" class="btn btn-success" (click)="startDemandeEntretien(item)" >Commencer</button>
+                  <div *ngIf="item.completed === 'IN_PROGRESS'">
+                    <div *ngIf="!isInputDisabled">
+                      <button class="btn btn-success" (click)="isInputDisabled = true">Completer</button>
+                      <a class="btn btn-primary card-link" routerLink="/tasks/demande/:{{item.IdDemandeEntretien}}" (click)="seeDetailsDemande(index)">Details</a>
+                      <button class="btn btn-warning" (click)="cancelDemandeEntretien(item)">Annuler</button>
+                    </div>
+                    <div *ngIf="isInputDisabled">
+                      <form [formGroup]="newDemandeComplitationForm">
+                        <div class="col-md-12">
+                          <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Montant</mat-label>
+                            <input matInput placeholder="montant" type="number" formControlName="montant">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                          <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Numero Demande Achat</mat-label>
+                            <input matInput placeholder="numDemandeAchat" formControlName="numDemandeAchat">
+                          </mat-form-field>
+                        </div>
+                      </form>
+                      <button class="btn btn-info" *ngIf="isInputDisabled" (click)="isInputDisabled = !isInputDisabled">Retourner</button>
+                      <button class="btn btn-success" *ngIf="isInputDisabled" (click)="completeDemandeEntretien(item)">Completer Demande</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="demansdeStatus && taskStatus">
+    <h1>You don't have any tasks to start or Approved Demande to Complete</h1>
+  </div>
+  
+ 
+  
+
+   
+  

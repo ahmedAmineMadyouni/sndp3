@@ -1,0 +1,106 @@
+.container {
+  margin-top: 2rem;
+
+  .row {
+    .col-lg-6 {
+      .card {
+        margin-top: 1.5rem;
+        animation: fade-in 1s ease-in-out;
+
+        &.bg-primary {
+          .card-body {
+            h1 {
+              animation: fade-in 1s ease-in-out;
+            }
+
+            .card-title {
+              animation: fade-in 1.2s ease-in-out;
+            }
+
+            .card-text {
+              margin-bottom: 1rem;
+            }
+
+            .card-link {
+              margin-right: 0.5rem;
+              animation: slide-up 1.2s ease-in-out;
+            }
+
+            .btn-primary {
+              animation: fade-in 1.2s ease-in-out;
+            }
+
+            .btn-warning {
+              animation: fade-in 1.2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+    .col-lg-6:nth-child(2) {
+      .card {
+        margin-top: 1.5rem;
+        margin-left: 00px;
+        animation: fade-in 1s ease-in-out;
+
+        &.bg-secondary {
+          .card-body {
+            h1 {
+              animation: fade-in 1s ease-in-out;
+            }
+
+            .card-title {
+              animation: fade-in 1.2s ease-in-out;
+            }
+
+            .card-text {
+              margin-bottom: 1rem;
+            }
+
+            .card-link {
+              margin-right: 0.5rem;
+              animation: slide-up 1.2s ease-in-out;
+            }
+
+            .btn-primary {
+              animation: fade-in 1.2s ease-in-out;
+            }
+
+            .btn-warning {
+              animation: fade-in 1.2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+    &.mt-4 {
+      h1 {
+        animation: fade-in 1.2s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

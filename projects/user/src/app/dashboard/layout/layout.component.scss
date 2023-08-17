@@ -1,0 +1,114 @@
+/* Custom Navbar Styles */
+nav.navbar {
+  background-color: #193d4f;
+
+  .navbar-brand {
+    font-size: 27px;
+    font-weight: bold;
+    color: #f7d41d !important;
+  }
+
+  .nav-link {
+    font-size: 20px;
+    color: #FFF !important;
+    padding: 7px 20px;
+
+    &:hover {
+      background-color: #346e8c;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    &.active {
+      background-color: #0f2c3b;
+      color: #FFF;
+    }
+  }
+
+  .navbar-nav {
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+
+    > .nav-item {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .nav-link {
+        padding: 10px 20px;
+
+        &.active {
+          background-color: #0f2c3b;
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  .nav-item.d-flex.align-items-center {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+      border: 2px solid #f7d41d;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .navbar-nav.ml-auto {
+      margin-top: 0;
+    }
+
+    .navbar-nav.ml-auto .nav-item {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Custom Styles for SNDP/AGILE */
+nav.navbar {
+  background-color: #193d4f;
+
+  .navbar-brand {
+    color: #f7d41d !important;
+  }
+
+  .nav-link {
+    color: #FFF !important;
+
+    &:hover {
+      background-color: #346e8c;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    &.active {
+      background-color: #0f2c3b;
+      color: #FFF;
+    }
+  }
+
+  .nav-item.d-flex.align-items-center {
+    img {
+      border: 2px solid #f7d41d;
+    }
+  }
+
+  .navbar-nav.ml-auto .nav-item:last-child {
+    .nav-link {
+      color: #f7d41d !important; /* Modified color for the username */
+    }
+    .xy{
+      color: whitesmoke;
+    }
+    
+  }
+}

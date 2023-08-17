@@ -1,0 +1,91 @@
+<div class="p-4">
+    <header *ngIf="!data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Ajouter  une nouvelle affectation </h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <button mat-flat-button *ngIf="data&&!driverButton" (click)="driverButton1()">Modifier chauffeur</button>
+        <button mat-flat-button  *ngIf="data&&!carButton" (click)="carButton1()">Modifier voiture</button>
+      </header>
+      <header *ngIf="data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Modifier   affectation </h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <button mat-flat-button *ngIf="data&&!driverButton" (click)="driverButton1()">Modifier chauffeur</button>
+        <button mat-flat-button  *ngIf="data&&!carButton" (click)="carButton1()">Modifier voiture</button>
+      </header>
+    <form [formGroup]="newAffectationform" >
+        <div class="row mt-3">
+         
+                
+                    <div class="col-md-12" *ngIf="!data || carButton" >
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Voiture</mat-label>
+                            <mat-select formControlName="voiture" >
+                                <mat-option *ngFor="let user of voiture" [value]="user?.idVoiture">
+                                  {{user?.libelleMarque}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </div> 
+                    <div class="col-md-12" *ngIf="data && !carButton">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Voiture</mat-label>
+                            <input matInput  formControlName="voiture" placeholder="voiture" [disabled]="true" readonly>
+                        </mat-form-field>
+                    </div>  
+                    <div class="col-md-12" *ngIf="!data || driverButton">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Profil</mat-label>
+                            <mat-select formControlName="chauffeur" >
+                                <mat-option *ngFor="let chauff of chauffeur" [value]="chauff?.idConducteur">
+                                  {{chauff?.nom}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </div> 
+                    <div class="col-md-12" *ngIf="data&&!driverButton">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Chauffeur</mat-label>
+                            <input matInput  formControlName="chauffeur" placeholder="chauffeur" [disabled]="true" readonly>
+                        </mat-form-field>
+                       
+                    </div>  
+                 
+                
+              
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label> Date Debut</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dateDebut">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+
+
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label> Date Fin</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="dateFin" >
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+
+                
+        </div>
+    </form>
+
+    <footer class="tw-p-6">
+        <div class="d-flex justify-content-center align-items-center">
+            <button *ngIf="!data" type="submit" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="createaffectation()" [disabled]="newAffectationform.invalid">Valider</button>
+            <button *ngIf="data" type="submit" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="updateAffectation()" >Modifier</button>
+              <button mat-flat-button class="btn btn-danger py-1 px-5" matDialogClose>fermer</button>
+            </div>
+        
+      </footer>
+</div>

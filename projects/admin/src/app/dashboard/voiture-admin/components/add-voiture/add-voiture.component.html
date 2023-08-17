@@ -1,0 +1,55 @@
+<div class="p-4">
+  <header *ngIf="!data" class="d-flex justify-content-between align-items-center" >
+      <h1 class="m-0">Ajouter un nouveau véhicule</h1>
+      <button mat-flat-button matDialogClose class="text-danger">
+        <mat-icon>close</mat-icon>
+      </button>
+    </header>
+    <header *ngIf="data" class="d-flex justify-content-between align-items-center" >
+      <h1 class="m-0">Modifier  véhicule</h1>
+      <button mat-flat-button matDialogClose class="text-danger">
+        <mat-icon>close</mat-icon>
+      </button>
+    </header>
+<form form [formGroup]="newVoitureForm">
+    <label for="matricule">Matricule :</label>
+    <input type="text" id="matricule" formControlName="MatriculeV"><br><br>
+
+    <label for="date-circulation">Date de circulation :</label>
+    <input type="date" id="date-circulation" formControlName="dateCirculation"><br><br>
+  
+    <label for="date-assurance">Date d'assurance :</label>
+    <input type="date" id="date-assurance" formControlName="dateAssurance"><br><br>
+  
+    <label for="date-fin-visite">Date de fin de visite technique :</label>
+    <input type="date" id="date-fin-visite" formControlName="dateFinVisite"><br><br>
+  
+    <label for="carte-grise">Carte grise :</label>
+    <input type="text" id="carte-grise" formControlName="CarteGrise"><br><br>
+  
+    <label for="marque">Voiture marque :</label>
+    <input type="text" id="marque" formControlName="libelleMarque"><br><br>
+  
+    <label for="modele">Voiture modèle :</label>
+    <input type="text" id="modele" formControlName="libellemodele"><br><br>
+
+    <label for="modele">Type :</label>
+    <input type="text" id="modele" formControlName="type"><br><br>
+  
+    <label for="selectFile" class="btn btn-primary">Select Image</label>
+    <span>{{fileName}}</span>
+    <input type="file" id="selectFile" (change)="selectImage($event)" hidden class="form-control"><br><br>
+  
+    <label for="nb-cylindre">Nombre de cylindres :</label>
+    <input type="number" id="nb-cylindre" formControlName="nbrCylindre"><br><br>
+  
+  </form>
+  <footer class="tw-p-6">
+    <div class="d-flex justify-content-center align-items-center">
+      <button *ngIf="!data" type="submit" (click)="createVoiture()" [disabled]="newVoitureForm.invalid">Ajouter</button>
+      <button *ngIf="data" type="submit" (click)="updateVoiture()" >Modifier</button>
+        <button mat-flat-button class="btn btn-danger py-1 px-5" matDialogClose>fermer</button>
+      </div>
+    
+  </footer>
+</div>

@@ -1,0 +1,68 @@
+/* style for the container */
+.mt-4 {
+    margin-top: 4rem;
+  }
+  
+  /* style for the Add chauffeur button */
+  .addChauffeur {
+    background-color: #00bcd4;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .addChauffeur:hover {
+    background-color: #0097a7;
+  }
+  
+  /* style for the table */
+  .mat-elevation-z8 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  /* style for the table header cells */
+  .mat-header-cell {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  /* style for the table cells */
+  .mat-cell {
+    font-size: 1.1rem;
+  }
+  
+  /* style for the Update and Delete buttons */
+  .btn {
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+  }
+  
+  .btn-warning:hover {
+    background-color: #ff9800;
+  }
+  
+  button[mat-raised-button][color="warn"] {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  button[mat-raised-button][color="warn"]:hover {
+    background-color: #e53935;
+  }
+  

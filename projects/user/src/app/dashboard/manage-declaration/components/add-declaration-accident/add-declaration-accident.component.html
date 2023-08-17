@@ -1,0 +1,100 @@
+<div class="p-4">
+    <header *ngIf="!data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Ajouter  declaration accident</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+      <header *ngIf="data" class="d-flex justify-content-between align-items-center" >
+        <h1 class="m-0">Modifier declaration accident</h1>
+        <button mat-flat-button matDialogClose class="text-danger">
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+    <form [formGroup]="newAccidentForm" >
+        <div class="row mt-3">
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numero constat1</mat-label>
+                        <input matInput   placeholder="numConstat1" formControlName="numConstat1">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numero constat2</mat-label>
+                        <input matInput   placeholder="numConstat2" formControlName="numConstat2">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Type</mat-label>
+                        <input matInput   placeholder="type"  formControlName="type">
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label> Date Declaration</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dateDeclaration">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label> Date Accident</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="date Accident" >
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>  
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description"  placeholder="task description ...."></textarea>
+                    </mat-form-field>
+                    
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Lieu</mat-label>
+                       <!-- <input type="text" id="numTelephone" formControlName="numTelephone"><br><br>-->
+                       <input matInput   placeholder="lieu" type="text" formControlName="lieu">
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Chauffeur</mat-label>
+                       <!-- <input type="text" id="numTelephone" formControlName="numTelephone"><br><br>-->
+                       <input matInput   placeholder="chauffeur" type="text" formControlName="chauffeur" [disabled]="true" readonly>
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Voiture</mat-label>
+                       <!-- <input type="text" id="numTelephone" formControlName="numTelephone"><br><br>-->
+                       <input matInput   placeholder="voiture" type="text" formControlName="voiture"  [disabled]="true"readonly >
+                    </mat-form-field>
+                </div> 
+
+                
+                <div class="col-md-12 my-3">
+                    <label for="selectFile" class="btn btn-primary">Select photo </label>
+                    <span>{{fileName}}</span>
+                    <input type="file" id="selectFile" (change)="selectImage($event)" hidden class="form-control">
+                </div>
+                
+                              
+        </div>
+    </form>
+    
+
+    <footer class="tw-p-6">
+        <div class="d-flex justify-content-center align-items-center">
+            <button *ngIf="!data" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="createdeclaration()" [disabled]="newAccidentForm.invalid"  >Ajouter </button>
+         
+            <button *ngIf="data" type="submit" mat-flat-button class="btn btn-success py-1 px-5 mx-2" (click)="updateDecAccident()" >Modifier</button>
+            <button mat-flat-button class="btn btn-danger py-1 px-5" matDialogClose>Fermer</button>
+          </div>
+        
+      </footer>
+</div>

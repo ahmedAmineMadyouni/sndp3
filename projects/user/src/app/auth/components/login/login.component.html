@@ -1,0 +1,43 @@
+<div class="login d-flex justify-content-center align-items-center m-auto">
+    
+    <div class="row">
+        <div class="col-md-6 p-0">
+            <div class="overlay"></div>
+            <img src="../../../../assets/285563204_1199929984191438_8943454901588831655_n.jpg" alt="">
+        </div>
+        <div class="col-md-6">
+         <div class="h-100 d-flex align-items-center justify-content-center w-100">
+            <div class="box w-75">
+                <h2>Login </h2>
+             
+        
+                <form [formGroup]="loginForm">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>username</mat-label>
+                            <input matInput   placeholder="username" formControlName="username">
+                            <mat-error>required</mat-error>
+                        </mat-form-field>
+                    </div>
+                   
+                    
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                          <mat-label>Mot de passe</mat-label>
+                          <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Mot de passe" formControlName="password">
+                          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                          </button>
+                        </mat-form-field>
+                      </div>
+                      
+                </form>
+                <div class="d-flex justify-content-center">
+                    <button   mat-raised-button color="warn" (click)="login()">Login</button>
+                </div>
+            </div>
+         </div>
+        </div>
+    </div>
+ 
+</div>

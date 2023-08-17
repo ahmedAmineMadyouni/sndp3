@@ -1,0 +1,55 @@
+<!--<div class="container">
+    <div class="imageBox">
+       <img [src]="'http://localhost:8787/api/v1/auth/get/image/'+data.photo.photo_id" alt="{{data.photo.name}}" width="100" height="100" style="border-radius: 50%">
+              
+    </div>
+    <div class="d-flex justify-content-between align-items-baseline my-3">
+        <h1 class="card-title ">{{data.titre}}</h1>
+        <button  mat-raised-button color="warn" (click)="startTask(data)">start</button>
+    </div>
+    <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{data.dateMission}}</p>
+    <hr>
+    <p class="card-text">{{data.description}}</p>
+    <div *ngIf="data.completed==='IN_PRORESS'">
+    <button  mat-raised-button color="warn"(click)="completeTask(data)">Complete</button>
+    <button  mat-raised-button color="warn"(click)="cancelTask(data)">cancel mission</button>
+</div>
+</div>
+<button type="button" (click)="goBack()">go back</button>-->
+
+
+
+<div class="container">
+    <div class="imageBox">
+      <img [src]="'http://localhost:8787/api/v1/auth/get/image/' + data.affectationVoitureChauffeurPhotoId" alt="{{data.affectationVoitureUsername}}" width="100" height="100" >                                 
+      
+    </div>
+    <div class="d-flex justify-content-between align-items-baseline my-3">
+      <h1 class="card-title">{{data.titre}}</h1>
+      <button class="btn btn-success" *ngIf="data.missionStatus === 'NEW_TASK'" mat-raised-button color="primary"  (click)="startTask(data)">Commencer</button>
+    </div>
+    <div *ngIf="data.missionStatus === 'IN_PROGRESS'" class="d-flex justify-content-between align-items-baseline my-3">
+      <button class="btn btn-warning d-flex justify-content-between align-items-baseline my-3" (click)="cancelTask(data)">Annuler Mission</button>
+      <button class="btn btn-success d-flex justify-content-between align-items-baseline my-3" (click)="completeTask(data)">Completer Mission</button>
+    </div>
+    <p class="card-subtitle mb-2 text-muted"> date Mission : {{data.dateMission}}</p>
+    <hr>
+    <h2>Mission Detail</h2>
+    <p><strong>Type:</strong> {{data.type}}</p>
+    <p><strong>Mission Status:</strong> {{data.missionStatus}}</p>
+    <p><strong>Description:</strong> {{data.description}}</p>
+    <h2>Address</h2>
+    <p><strong>Address 1:</strong> {{data.adresse?.adresse1}}</p>
+    <p><strong>Address 2:</strong> {{data.adresse?.adresse2}}</p>
+    <p><strong>Code Postal:</strong> {{data.adresse?.codePostal}}</p>
+    <p><strong>Ville:</strong> {{data.adresse?.ville}}</p>
+    <p><strong>pays:</strong> {{data.adresse?.pays}}</p>
+    <h2>Affectation du véhicule</h2>
+    <p><strong>Nom du conducteur/ username:</strong> {{data.affectationVoitureChauffeurNom}} / {{data.affectationVoitureUsername}}</p>
+    <p><strong>Modèle de voiture:</strong> {{data.affectationVoitureModele}} /{{data.affectationVoitureMarque}}</p>
+    <p><strong>Immatriculation des véhicules:</strong> {{data.affectationVoitureMatricule}}</p>
+    <p><strong>Carte grise:</strong> {{data.affectationVoitureCarteGrise}}</p>
+    <img [src]="'http://localhost:8787/api/v1/auth/get/image/'+data.affectationVoitureVoiturePhotoId" alt="{{data.affectationVoitureModele}}" width="100" height="100" style="border-radius: 50%">
+  </div>
+  <button type="button" (click)="goBack()" mat-raised-button color="primary">Retourner</button>
+  
